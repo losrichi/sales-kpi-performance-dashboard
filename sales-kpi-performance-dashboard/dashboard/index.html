@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive portfolio analytics dashboard on 24,000 synthetic retail sales lines, 12 sales KPIs and 12 months of performance.">
+  <title>Sales Performance | Retail Analytics Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Report navigation">
+    <div class="brand"><span class="brand-mark">◈</span><span>stride<span class="brand-dot">.</span><small>ANALYTICS STUDIO</small></span></div>
+    <div class="side-section-label">WORKSPACE</div>
+    <div class="side-item active"><span class="side-icon">▦</span> Sales overview <span class="side-arrow">›</span></div>
+    <div class="side-section-label section-gap">OVERVIEW</div>
+    <a class="side-item" href="#trend"><span class="side-icon">↗</span> Performance trend</a>
+    <a class="side-item" href="#segments"><span class="side-icon">▥</span> Segment analysis</a>
+    <a class="side-item" href="#products"><span class="side-icon">▤</span> Product ranking</a>
+    <div class="sidebar-bottom"><div class="data-pill"><span class="live-dot"></span> DEMO DATA</div><strong>2025 Retail Sales</strong><p>24,000 fictional order lines<br>12 months · USD</p><div class="side-separator"></div><p>Portfolio analytics case study.<br>All figures are synthetic.</p></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">WORKSPACE <span>/</span> RETAIL SALES <span>/</span> <b>OVERVIEW</b></div><div class="top-right"><span class="top-tag">SYNTHETIC DATA</span><div class="avatar">DA</div></div></header>
+    <div class="page-content">
+      <div class="page-heading"><div><p class="eyebrow">PERFORMANCE MONITORING · 2025</p><h1>Sales Performance <span>Overview</span></h1><p class="subtitle">Understand revenue, profitability, and customer performance at a glance.</p></div><button id="export" class="export-button" type="button"><span>⇩</span> Export filtered CSV</button></div>
+      <section class="filter-panel" aria-label="Dashboard filters"><div class="filter-head"><span>⌁ &nbsp; FILTER REPORT</span><span class="filter-hint">Filters update all KPIs and charts</span></div><div class="filter-fields">
+        <label>Reporting period<select id="month"><option value="all">Full year · 2025</option></select></label>
+        <label>Region<select id="region"><option value="all">All regions</option><option>North</option><option>South</option><option>East</option><option>West</option></select></label>
+        <label>Product category<select id="category"><option value="all">All categories</option><option>Electronics</option><option>Home &amp; Living</option><option>Office</option><option>Accessories</option></select></label>
+        <label>Sales channel<select id="channel"><option value="all">All channels</option><option>Online</option><option>Retail</option><option>Marketplace</option></select></label>
+        <button id="reset" class="reset-button" type="button">↺ &nbsp; Reset</button>
+      </div></section>
+      <div class="section-heading"><div><span class="section-kicker">01 / CORE PERFORMANCE</span><h2>Key performance indicators</h2></div><div class="section-aside"><span class="status-dot"></span><span id="scope">Full year · All segments</span></div></div>
+      <section id="kpis" class="kpi-grid" aria-label="12 KPIs" aria-live="polite"></section>
+      <div class="section-heading" id="trend"><div><span class="section-kicker">02 / REVENUE INTELLIGENCE</span><h2>Revenue & sales trends</h2></div><div class="section-aside">JAN — DEC 2025</div></div>
+      <div class="chart-row"><section class="panel trend-panel"><div class="panel-heading"><div><h3>Monthly net revenue</h3><p>USD · Trend retains segment filters, highlights selected month</p></div><div class="chart-legend"><span class="legend-line"></span> Net revenue</div></div><div id="trendChart" class="trend-chart" role="img" aria-label="Monthly net revenue line chart"></div></section><section class="panel category-panel"><div class="panel-heading"><div><h3>Revenue by category</h3><p>Share of selected-period revenue</p></div><div class="panel-mini-icon">▥</div></div><div id="categoryChart" class="bar-chart" role="img" aria-label="Revenue by category"></div></section></div>
+      <div class="section-heading" id="segments"><div><span class="section-kicker">03 / SEGMENT BREAKDOWN</span><h2>Where revenue comes from</h2></div></div>
+      <div class="chart-row secondary-row"><section class="panel"><div class="panel-heading"><div><h3>Regional distribution</h3><p>Sales contribution by territory</p></div></div><div id="regionChart" class="region-content"></div></section><section class="panel"><div class="panel-heading"><div><h3>Performance by channel</h3><p>Net revenue by acquisition channel</p></div></div><div id="channelChart" class="channel-content"></div></section></div>
+      <div class="section-heading" id="products"><div><span class="section-kicker">04 / PRODUCT INTELLIGENCE</span><h2>Best-selling products</h2></div><div class="section-aside">SORTED BY NET REVENUE</div></div>
+      <section class="panel table-panel"><table><thead><tr><th>PRODUCT</th><th>CATEGORY</th><th class="number">UNITS</th><th class="number">NET REVENUE</th><th class="number">GROSS PROFIT</th><th class="number">MARGIN</th></tr></thead><tbody id="productsBody"></tbody></table></section>
+      <section class="insights" aria-live="polite"><div class="insight-icon">✦</div><div><div class="insight-label">AUTOMATED REPORT INSIGHT</div><p id="insightText"></p></div><div class="insight-tag">DATA-DRIVEN</div></section>
+      <footer>Retail Performance Analytics — Portfolio Demo <span>•</span> Generated synthetic sales data <span>•</span> No real customers or sales</footer>
+    </div>
+  </main>
+</div>
+<script src="sales_data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

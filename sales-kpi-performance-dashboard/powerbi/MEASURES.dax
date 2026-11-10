@@ -1,0 +1,27 @@
+-- Paste EACH MEASURE independently in Power BI Desktop > Modeling > New measure.
+-- Import data/sales_transactions.csv and name the table "Sales".
+-- Dates: Sales[order_date] must have Date data type; numeric columns must be numeric.
+
+Net Revenue = SUM(Sales[net_sales])
+Gross Sales = SUM(Sales[gross_sales])
+Completed Orders = CALCULATE(DISTINCTCOUNT(Sales[order_id]), Sales[returned] = 0)
+Units Sold = CALCULATE(SUM(Sales[quantity]), Sales[returned] = 0)
+Average Order Value = DIVIDE([Net Revenue], [Completed Orders])
+Gross Profit = SUM(Sales[gross_profit])
+Gross Margin % = DIVIDE([Gross Profit], [Net Revenue])
+Active Customers = CALCULATE(DISTINCTCOUNT(Sales[customer_id]), Sales[returned] = 0)
+Returned Lines = SUM(Sales[returned])
+Total Lines = COUNTROWS(Sales)
+Return Rate % = DIVIDE([Returned Lines], [Total Lines])
+Discount Rate % = DIVIDE(SUM(Sales[discount_amount]), [Gross Sales])
+
+-- Use a proper Calendar table related to Sales[order_date] for time intelligence.
+Calendar = CALENDAR(DATE(2025,1,1), DATE(2025,12,31))
+-- IMPORTANT: Calendar above is a *calculated table*, not a measure.
+-- Create relationship Calendar[Date] (one) -> Sales[order_date] (many).
+-- Mark Calendar as the date table on Calendar[Date].
+
+Revenue Prior Month = CALCULATE([Net Revenue], DATEADD('Calendar'[Date], -1, MONTH))
+Orders Prior Month = CALCULATE([Completed Orders], DATEADD('Calendar'[Date], -1, MONTH))
+Revenue MoM % = DIVIDE([Net Revenue]-[Revenue Prior Month], [Revenue Prior Month])
+Orders MoM % = DIVIDE([Completed Orders]-[Orders Prior Month], [Orders Prior Month])

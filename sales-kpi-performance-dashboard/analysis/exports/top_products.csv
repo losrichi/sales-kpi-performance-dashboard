@@ -1,0 +1,13 @@
+product_id,product_name,category,units_sold,net_revenue,gross_profit
+P002,Portable Speaker,Electronics,3255,368572.75,166762.75
+P001,Wireless Headphones,Electronics,3212,272469.05,134353.05
+P003,Smart Desk Lamp,Electronics,3243,231877.5,128101.5
+P009,Monitor Stand,Office,3285,199820.8,107840.8
+P005,Cotton Throw,Home & Living,3179,178439.6,95785.6
+P007,Ergonomic Mouse,Office,3144,146478.15,83598.15
+P004,Ceramic Vase,Home & Living,3190,127623.3,73393.3
+P012,Laptop Sleeve,Accessories,3340,124000.5,73900.5
+P011,Canvas Tote,Accessories,3284,109292.75,66600.75
+P006,Desk Organizer,Home & Living,3342,101800.0,61696.0
+P010,Travel Bottle,Accessories,3192,88039.65,56119.65
+P008,Notebook Set,Office,3304,75446.4,52318.4
